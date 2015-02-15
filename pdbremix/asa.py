@@ -97,8 +97,8 @@ def calculate_asa(atoms, probe, n_sphere_point=960):
 def makeBoxes(A, dmax):
     '''
     returns dictionary which keys are indecies of boxes (regions)
-    with dmax length side and values
-    are indicies of atoms belonging to these boxes
+    with dmax length side and 
+    values are indicies of atoms belonging to these boxes
     '''
     B = defaultdict(list) # space divided into boxes
     for i in xrange(len(A)):
@@ -110,7 +110,7 @@ def makeBoxes(A, dmax):
 
 def addBond(A, a1, a2, conn, dmax):
     '''
-    add bond (if its length satisfying bond limits)
+    add neighboring atoms (if distance to it is less than dmax)
     to atoms a1 and a2 in adjacency list conn
     '''
     atom1 = A[a1]
@@ -148,7 +148,7 @@ def neighbAtoms(B, box):
 def adjList(A, dmax):
     '''
     returns adjacency list from coordinate file
-    in O(len(A)) time!
+    in O(len(A)) time
     '''
     B = makeBoxes(A, dmax) # put atoms into the boxes with dmax length side
     # now go on boxes and check connections inside 3x3 superboxes
